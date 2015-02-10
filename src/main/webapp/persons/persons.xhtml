@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="content">
+		<h:form id="persons">
+	    	<h:dataTable value="#{personsTable.allPersons}" var="pers"
+	    		styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+	    		<h:column>
+	    			<f:facet name="header">Боевой №</f:facet>
+<!-- 	    			<h:commandLink action="#{personsTable.personUrl}" >
+	    				<h:outputText value="#{pers.number}"/>
+	    				<f:param name="pid" value="#{pers.personId}"/>
+	    			</h:commandLink> -->
+	    			<h:link outcome="#{personsTable.personUrl}"
+							value="#{pers['number']}"
+							title="#{pers['number']}">
+						<f:param name="pid" value="#{pers['personId']}" />
+					</h:link>
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Фамилия</f:facet>
+	    			<h:outputLabel value="#{pers.sureName}"/>
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Имя</f:facet>
+	    			<h:outputLabel value="#{pers.firstName}"/>
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Отчество</f:facet>
+	    			<h:outputLabel value="#{pers.secondName}"/>
+	    		</h:column>
+	    	</h:dataTable>
+	    </h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="header">
+	    Add your header here or delete to use the default
+	</ui:define>
+	<ui:define name="content">
+	    <h:form id="personInfo">
+	    	<h:panelGrid columns="2" width="50%">
+	    		<h:outputText value="Боевой номер"/>
+	    		<h:outputText value="#{personInfo.model.number}"/>
+	    		
+	    		<h:outputText value="Фамилия"/>
+	    		<h:outputText value="#{personInfo.model.sureName}"/>
+	    		
+	    		<h:outputText value="Имя"/>
+	    		<h:outputText value="#{personInfo.model.firstName}"/>
+	    		
+	    		<h:outputText value="Отчество"/>
+	    		<h:outputText value="#{personInfo.model.secondName}"/>
+	    	</h:panelGrid>
+	    </h:form>
+	</ui:define>
+	<ui:define name="footer">
+	    Add your footer here or delete to use the default
+	</ui:define>
+</ui:composition>
+</html>
