@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
-<ui:composition template="/templates/layout.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				template="/templates/layout.xhtml">
+				
+	<ui:param name="" value=""/>
 	<ui:define name="header">
 	    Add your header here or delete to use the default
 	</ui:define>
@@ -14,16 +15,16 @@
 	    <h:form id="personInfo">
 	    	<h:panelGrid columns="2" width="50%" border="2">
 	    		<h:outputText value="Боевой номер"/>
-	    		<h:outputText value="#{personInfo.model.number}"/>
+	    		<h:inputText value="#{personInfo.model.number}" disabled="true"/>
 	    		
 	    		<h:outputText value="Фамилия"/>
-	    		<h:outputText value="#{personInfo.model.sureName}"/>
+	    		<h:inputText value="#{personInfo.model.sureName}" disabled="true"/>
 	    		
 	    		<h:outputText value="Имя"/>
-	    		<h:outputText value="#{personInfo.model.firstName}"/>
+	    		<h:inputText value="#{personInfo.model.firstName}" disabled="true"/>
 	    		
 	    		<h:outputText value="Отчество"/>
-	    		<h:outputText value="#{personInfo.model.secondName}"/>
+	    		<h:inputText value="#{personInfo.model.secondName}" disabled="true"/>
 	    	</h:panelGrid>
 	    </h:form>
 	</ui:define>
@@ -31,4 +32,3 @@
 	    Add your footer here or delete to use the default
 	</ui:define>
 </ui:composition>
-</html>
