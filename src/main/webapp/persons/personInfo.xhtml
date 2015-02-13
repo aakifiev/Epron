@@ -7,24 +7,30 @@
 				xmlns:f="http://java.sun.com/jsf/core"
 				template="/templates/layout.xhtml">
 				
-	<ui:param name="" value=""/>
+	<ui:param name="_edit" value="#{personParams.edit}"/>
 	<ui:define name="header">
 	    Add your header here or delete to use the default
 	</ui:define>
 	<ui:define name="content">
 	    <h:form id="personInfo">
-	    	<h:panelGrid columns="2" width="50%" border="2">
+	    	<h:panelGrid id="fio" columns="2" width="50%" border="2">
 	    		<h:outputText value="Боевой номер"/>
-	    		<h:inputText value="#{personInfo.model.number}" disabled="true"/>
+	    		<h:inputText value="#{personInfo.model.number}" disabled="#{_edit}"/>
 	    		
 	    		<h:outputText value="Фамилия"/>
-	    		<h:inputText value="#{personInfo.model.sureName}" disabled="true"/>
+	    		<h:inputText value="#{personInfo.model.sureName}" disabled="#{_edit}"/>
 	    		
 	    		<h:outputText value="Имя"/>
-	    		<h:inputText value="#{personInfo.model.firstName}" disabled="true"/>
+	    		<h:inputText value="#{personInfo.model.firstName}" disabled="#{_edit}"/>
 	    		
 	    		<h:outputText value="Отчество"/>
-	    		<h:inputText value="#{personInfo.model.secondName}" disabled="true"/>
+	    		<h:inputText value="#{personInfo.model.secondName}" disabled="#{_edit}"/>
+	    	</h:panelGrid>
+	    	<h:panelGrid>
+	    		<h:commandButton value="edit" action="#{personInfo.switchEdit}">
+	    			<f:ajax execute="@form" render=":fio"/>
+	    		</h:commandButton>
+	    		<h:button value="mode" onclick="#{person}"/>
 	    	</h:panelGrid>
 	    </h:form>
 	</ui:define>

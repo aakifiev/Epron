@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import main.java.model.immutable.VPerson;
 import main.java.service.PersonService;
+import main.java.service.params.PersonParams;
 
 @SuppressWarnings("serial")
 @Named
@@ -19,9 +20,8 @@ public class PersonInfo implements Serializable{
 	@Inject
 	PersonService personService;
 	
-/*	@Inject
-	@RequestParam ("pid")
-	Instance<String> personId;*/
+	@Inject
+	PersonParams personParams;
 	
 	private VPerson model;
 	
@@ -32,6 +32,11 @@ public class PersonInfo implements Serializable{
 		if (model == null)
 			model = personService.getVPersonById(personId);
 		return model;
+	}
+	
+	public String switchEdit(){
+		personParams.setEdit(!personParams.isEdit());
+		return null;
 	}
 
 }
