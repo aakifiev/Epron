@@ -11,6 +11,7 @@ import javax.inject.Named;
 import main.java.model.immutable.VPerson;
 import main.java.service.PersonService;
 import main.java.service.params.PersonParams;
+import main.java.ui.Nav;
 
 @SuppressWarnings("serial")
 @Named
@@ -23,20 +24,22 @@ public class PersonInfo implements Serializable{
 	@Inject
 	PersonParams personParams;
 	
+	@Inject
+	Nav nav;
+	
 	private VPerson model;
 	
 	public VPerson getModel(){
-		Map<String, String> params = 
-				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String personId = params.get("pid");
-		if (model == null)
+		if (model == null){
+			Map<String, String> params = 
+					FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+			String personId = params.get("pid");
+			if (personId == null || "".equals(personId)){
+				personId = "1";
+			}
 			model = personService.getVPersonById(personId);
+		}
 		return model;
-	}
-	
-	public String switchEdit(){
-		personParams.setEdit(!personParams.isEdit());
-		return null;
 	}
 
 }
