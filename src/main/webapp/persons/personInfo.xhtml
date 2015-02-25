@@ -13,26 +13,42 @@
 	</ui:define>
 	<ui:define name="content">
 	    <h:form id="personInfoId">
-	    <ui:param name="model" value="#{personInfo.model}"/>
+	    	<ui:param name="mode" value="#{personInfo.mode}"/>
+	    	<ui:param name="isRead" value="#{mode eq 'edit'}"/>
+	    	<ui:param name="model" value="#{personInfo.model}"/>
 	    	<h:panelGrid id="fio" columns="2" width="50%" border="2">
 	    		<h:outputText value="Боевой номер"/>
-	    		<h:inputText value="#{model.number}" disabled="#{personParams.edit}"/>
+	    		<h:inputText value="#{model.number}" disabled="#{!isRead}"/>
 	    		
 	    		<h:outputText value="Фамилия"/>
-	    		<h:inputText value="#{model.sureName}" disabled="#{personParams.edit}"/>
+	    		<h:inputText value="#{model.sureName}" disabled="#{!isRead}"/>
 	    		
 	    		<h:outputText value="Имя"/>
-	    		<h:inputText value="#{model.firstName}" disabled="true"/>
+	    		<h:inputText value="#{model.firstName}" disabled="#{!isRead}"/>
 	    		
 	    		<h:outputText value="Отчество"/>
-	    		<h:inputText value="#{model.secondName}" disabled="true"/>
+	    		<h:inputText value="#{model.secondName}" disabled="#{!isRead}"/>
 	    	</h:panelGrid>
 	    	<h:panelGrid>
-	    		<h:commandButton value="edit">
-	    			<f:ajax execute="@none" render="fio" />
-	    			<f:param name="pid" value="#{model.personId}"/>
-	    		</h:commandButton>
+	    		<h:commandLink value="#{personInfo.modeButtonValue}" 
+	    			actionListener="#{personInfo.Save}"
+	    			action="#{personInfo.redirectForEdit}">
+	    			<f:setPropertyActionListener 
+	    				target="#{personInfo.personId}" 
+	    				value="#{model.personId}"/>
+	    			<f:setPropertyActionListener 
+	    				target="#{personInfo.mode}" 
+	    				value="edit"/>
+	    		</h:commandLink>
+	    		<!-- 	<f:ajax execute="@this" render="fio">
+	    				<f:param name="mode" value="#{isRead ? 'edit':'read'}"/>
+	    				<f:param name="pid" value="#{model.personId}"/>
+	    			</f:ajax>
+	    		</h:commandButton> -->
 	    	</h:panelGrid>
+	    	<script>
+	    		
+	    	</script>
 	    </h:form>
 	</ui:define>
 	<ui:define name="footer">

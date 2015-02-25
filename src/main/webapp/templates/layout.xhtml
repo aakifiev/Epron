@@ -2,15 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 <head>
   <title><ui:insert name="title">Эпрон</ui:insert></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="javaScript/jquery-2.1.3.js"></script>
 </head>
 
 <body>
 <!--  ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>-->
-
+<f:view locale="ru_RU">
 <div id="header" style="margin-left: 10%">
     <ui:insert name="header">
     	Header area.  See comments below this line in the source.
@@ -39,7 +41,7 @@
 		<!--<ui:include src="footer.xhtml"/>  -->
   </ui:insert>
 </div>
-
+</f:view>
 </body>
 
 </html>
